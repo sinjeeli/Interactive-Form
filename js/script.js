@@ -1,7 +1,7 @@
 // console.log('test');
 //*just to test if the js file is working properly or not
 
-var nameRef = document.querySelector('input[type="text"]');
+var nameRef = document.getElementById('name');
 console.log(nameRef);
 //Create a variable to reference the “Name” <input type="text"> element and log the variable out to the console to ensure the correct element is being referenced.
 
@@ -174,3 +174,38 @@ payment.addEventListener('change', (event) => {
 
 
 }); 
+//////////////////////////////////////////////////
+var nameRef2 = document.getElementById('name');
+
+console.log(activitiesRef);
+var email = document.getElementById('email');
+console.log(email);
+var cardNumber = document.getElementById('cc-num');
+console.log(cardNumber);
+var zipCode = document.getElementById('zip');
+console.log(zipCode);
+var cVV = document.getElementById('cvv');
+console.log(cVV);
+const form = document.querySelector('form');
+console.log(form);
+
+////////////////////////////////////////////////////////////////////
+form.addEventListener('submit', (event) => {
+
+    event.preventDefault();
+
+    var newNameRef = nameRef2.value;
+
+    var regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+
+    var testResults = regex.test(newNameRef);
+
+    console.log(testResults);
+
+
+
+
+}
+);
+
+
