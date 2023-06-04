@@ -92,8 +92,27 @@ designRef.addEventListener("change", (event) =>
 
 
     }
+    ////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+   
+
 
 
 });
 
+
+var activitiesRef = document.getElementById('activities');
+var activitiescostRef = document.getElementById('activities-cost');
+console.log(activitiesRef);
+console.log(activitiescostRef);
+
+var totalCost = 0;
+
+activitiesRef.addEventListener("change", (event) => {
+
+var dataCostRef = event.target.value();
+
+var dataTheme = dataCostRef.getAttribute('data-cost');
+
+});
 
