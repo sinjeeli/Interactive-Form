@@ -144,4 +144,33 @@ paypal.hidden = true;
 bitcoin.hidden = true;
 
 
+payment.children[1].setAttribute('selected', 'selected');
 
+payment.addEventListener('change', (event) => {
+
+
+    var selectedPayment = event.target.value;
+
+    if(selectedPayment === 'paypal') {
+
+        paypal.hidden = false;
+        bitcoin.hidden = true;
+        credit.hidden = true;   
+
+    } else if (selectedPayment === 'bitcoin') {
+        
+        paypal.hidden = true;
+        bitcoin.hidden = false;
+        credit.hidden = true;   
+
+
+    } else {
+
+        paypal.hidden = true;
+        bitcoin.hidden = true;
+        credit.hidden = false; 
+
+    }
+
+
+}); 
