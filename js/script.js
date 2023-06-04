@@ -110,9 +110,10 @@ var totalCost = 0;
 
 activitiesRef.addEventListener("change", (event) => {
 
-var dataCostRef = event.target.value();
+var dataCostRef = +event.target.getAttribute('data-cost');
+console.log(dataCostRef);
+console.log(typeof dataCostRef);
 
-var dataTheme = dataCostRef.getAttribute('data-cost');
 
 });
 
