@@ -125,8 +125,8 @@ if(event.target.checked) {
         console.log('unchecked');
     }
     console.log(totalCost);
+    activitiescostRef.innerHTML = `Total: $${totalCost}`;
 });
-
 
 
 
