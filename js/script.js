@@ -63,6 +63,7 @@ console.log(colorRef);
 console.log(designRef);
 console.log(colorOptionsRef);
 
+colorRef.disabled = true;
 
 
 
