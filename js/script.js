@@ -73,6 +73,25 @@ designRef.addEventListener("change", (event) =>
     colorRef.disabled = false;
     //enabled
 
+    for(let i = 0; i < colorOptionsRef.length; i++) {
+        var tarGet = event.target.value;
+        var dataTheme = colorOptionsRef[i].getAttribute('data-theme');
+        console.log(tarGet);
+        console.log(dataTheme);
+        if(tarGet == dataTheme) {
+            colorOptionsRef[i].hidden = false;
+            colorOptionsRef[i].hidden = true;
+
+        }
+        else {
+            colorOptionsRef[i].hidden = true;
+            colorOptionsRef[i].hidden = false;
+
+        }
+
+
+    }
+
 
 });
 
