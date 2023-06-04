@@ -78,14 +78,15 @@ designRef.addEventListener("change", (event) =>
         var dataTheme = colorOptionsRef[i].getAttribute('data-theme');
         console.log(tarGet);
         console.log(dataTheme);
+
         if(tarGet == dataTheme) {
-            colorOptionsRef[i].hidden = true;
             colorOptionsRef[i].hidden = false;
+            colorOptionsRef[i].setAttribute('selected','selected');
 
         }
             else{
-            colorOptionsRef[i].hidden = false;
             colorOptionsRef[i].hidden = true;
+            colorOptionsRef[i].removeAttribute('selected');
 
         }
 
