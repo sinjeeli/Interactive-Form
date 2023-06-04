@@ -377,3 +377,16 @@ template {
 [hidden] {
     display: none;
 }
+
+
+/**
+ adding a border color just to make sure the focus state is working
+ for testing purposes
+ */
+ input[type="text"]:focus{
+    outline: 5px solid red;
+ }
+ /**
+ adding a border color just to make sure the focus state is working
+ for testing purposes
+ */
