@@ -52,8 +52,17 @@ jobRoleRef.addEventListener("change", (event) => {
     } );
     // Use the variable for the "Job Role" menu to listen for the change event on this element. When a "change" is detected, use a conditional statement to check the value property of the element. The event.target statement will be helpful here. Log out the condition and the event.target’s value to inspect them. You’ll have to make a selection in the "Job Role" menu to print those log statements to the console.
 
-var colorRef = document.getElementById('color');
-colorRef.style.display = 'none';
-console.log(colorRef);
+////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 
-colorRef.focus();
+var colorRef = document.getElementById('color');
+var designRef = document.getElementById('design');
+var colorOptionsRef = colorRef.children;
+
+console.log(colorRef);
+console.log(designRef);
+console.log(colorOptionsRef);
+
+
+
+
