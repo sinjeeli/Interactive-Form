@@ -127,6 +127,21 @@ if(event.target.checked) {
     console.log(totalCost);
     activitiescostRef.innerHTML = `Total: $${totalCost}`;
 });
+///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+var payment = document.getElementById('payment');
+var credit = document.getElementById('credit-card');
+var paypal = document.getElementById('paypal');
+var bitcoin = document.getElementById('bitcoin');
+
+console.log(payment);
+console.log(credit);
+console.log(paypal);
+console.log(bitcoin);
+//////////////////////log//////////////////////////
+paypal.hidden = true;
+bitcoin.hidden = true;
 
 
 
