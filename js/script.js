@@ -62,13 +62,18 @@ colorRef.focus();
 //
 var designRef = document.getElementById('design');
 console.log(designRef);
+
 // Use the variable for the "Job Role" menu to listen for the change event on this element. When a "change" is detected, use a conditional statement to check the value property of the element. The event.target statement will be helpful here. Log out the condition and the event.target’s value to inspect them. You’ll have to make a selection in the "Job Role" menu to print those log statements to the console.
 designRef.addEventListener("change", (event) => {
     const designValue = event.target.value;
     console.log(designRef);
 
-    if(event.target.value == "js puns" || "heart js" ) {
+    if(event.target.value == "js puns") {
         //
+
+        if(colorRef.childNodes === "js puns") {
+
+
         colorRef.style.display = 'block';
         //will show the text field if value equals other
     } 
@@ -76,6 +81,8 @@ designRef.addEventListener("change", (event) => {
         colorRef.style.display = 'none';
         //will hid the text field
     
+
+    }
         //this line makes is to that the text field is blank/reset every time a different role is selected and if something was typed into the text field
     }
     // console.log(event)
