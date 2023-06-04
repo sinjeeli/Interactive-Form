@@ -58,12 +58,22 @@ jobRoleRef.addEventListener("change", (event) => {
 var colorRef = document.getElementById('color');
 var designRef = document.getElementById('design');
 var colorOptionsRef = colorRef.children;
-
+//declaration
 console.log(colorRef);
 console.log(designRef);
 console.log(colorOptionsRef);
+//log to test
 
 colorRef.disabled = true;
+//set it to disabled cant interact: color select element
 
+designRef.addEventListener("change", (event) =>
+{
+
+    colorRef.disabled = false;
+    //enabled
+
+
+});
 
 
