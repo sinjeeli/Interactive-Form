@@ -191,21 +191,28 @@ console.log(form);
 
 ////////////////////////////////////////////////////////////////////
 form.addEventListener('submit', (event) => {
-
-    event.preventDefault();
-
-    var newNameRef = nameRef2.value;
-
-    var regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
-
-    var testResults = regex.test(newNameRef);
-
-    console.log(testResults);
+event.preventDefault();
+var newNameRef = nameRef2.value;
+var regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+var testResults = regex.test(newNameRef);
+//console.log(testResults);
 
 
 
 
+
+
+
+
+if(!testResults) {
+event.preventDefault();
+alert('Invalid Name');
+nameRef2.value = '';
 }
-);
+else {
+form.submit();
+console.log('Valid name');
+};
 
 
+});
