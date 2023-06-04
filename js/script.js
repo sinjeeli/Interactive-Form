@@ -196,22 +196,30 @@ var newNameRef = nameRef2.value;
 var regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
 var testResults = regex.test(newNameRef);
 //console.log(testResults);
+var newEmailRef = email.value;
+var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+var emailTestResults = emailRegex.test(newEmailRef);
+/////////////////////////////////////////////////////////////////////////
+var newcardNumber = cardNumber.value;
+var cardNumberRegex = /^\d{16}$/;
+var cardNumberTestResults = cardNumberRegex.test(newcardNumber);
+
+    
 
 
 
 
 
-
-
-
-if(!testResults) {
+if(!testResults || !emailTestResults|| cardNumberTestResults) {
 event.preventDefault();
-alert('Invalid Name');
+alert('One or more fields invalid');
 nameRef2.value = '';
+email.value="";
+cardNumber.value="";
 }
 else {
 form.submit();
-console.log('Valid name');
+console.log('All fields valid');
 };
 
 
