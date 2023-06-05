@@ -191,9 +191,27 @@ console.log(form);
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////
+
 form.addEventListener('submit', (event) => {
 
 event.preventDefault();
+
+
+function showToolTip(element) {
+
+    element.style.visibility = 'visible';
+    
+    }
+    
+    function hideToolTip(element) {
+    
+        element.style.visibility = 'hidden';
+    
+    
+    }
 
 
 var newNameRef = nameRef2.value;
@@ -226,74 +244,89 @@ var cvvHint = document.getElementById('cvv-hint');
 var zipHint = document.getElementById('zip-hint');
 
 
-
-
-
-
-if (!testResults) {
+function showToolTip(element) {
+    element.style.visibility = 'visible';
+  }
+  
+  function hideToolTip(element) {
+    element.style.visibility = 'hidden';
+  }
+  
+  // ...
+  
+  if (!testResults) {
     event.preventDefault();
     console.log('Invalid Name');
     nameHint.style.display = "inline";
+    showToolTip(nameHint);
     nameRef2.value = '';
-    nameRef2.nextElementSibling.textContent = "Invalid Name";
-}
-else {
-    nameRef2.nextElementSibling.textContent = '';
+    //nameRef2.nextElementSibling.textContent = "Invalid Name";
+  } else {
+    //nameRef2.nextElementSibling.textContent = '';
     nameHint.style.display = "none";
-
+    hideToolTip(nameHint);
   }
+  
+  // ...
   
   if (!emailTestResults) {
     event.preventDefault();
     console.log('Invalid Email');
     emailHint.style.display = "inline";
+    showToolTip(emailHint);
     email.value = '';
-    email.nextElementSibling.textContent = "Invalid Email";
-}
-else {
-    email.nextElementSibling.textContent = '';
+    //email.nextElementSibling.textContent = "Invalid Email";
+  } else {
+    //email.nextElementSibling.textContent = '';
     emailHint.style.display = "none";
+    hideToolTip(emailHint);
   }
   
+  // ...
   
   if (!cardNumberTestResults) {
     event.preventDefault();
     console.log('Invalid Card Number');
+    showToolTip(ccHint);
     ccHint.style.display = "inline";
     cardNumber.value = '';
-    cardNumber.nextElementSibling.textContent = "Invalid card";
-}
-else {
-    cardNumber.nextElementSibling.textContent = '';
+    //cardNumber.nextElementSibling.textContent = "Invalid card";
+  } else {
+    //cardNumber.nextElementSibling.textContent = '';
     ccHint.style.display = "none";
+    hideToolTip(ccHint);
   }
+  
+  // ...
   
   if (!newcVVTestResults) {
     event.preventDefault();
     console.log('Invalid CVV');
     cvvHint.style.display = "inline";
+    showToolTip(cvvHint);
     cVV.value = '';
-    cVV.nextElementSibling.textContent = "Invalid CVV";
-}
-else {
-    cVV.nextElementSibling.textContent = '';
+    //cVV.nextElementSibling.textContent = "Invalid CVV";
+  } else {
+    //cVV.nextElementSibling.textContent = '';
     cvvHint.style.display = "none";
-    
+    hideToolTip(cvvHint);
   }
+  
+  // ...
   
   if (!zipCodeTestResults) {
     event.preventDefault();
     console.log('Invalid Zip Code');
     zipHint.style.display = "inline";
+    showToolTip(zipHint);
     zipCode.value = '';
-    zipCode.nextElementSibling.textContent = "Invalid zipCode";
-}
-else {
-    zipCode.nextElementSibling.textContent = '';
+    //zipCode.nextElementSibling.textContent = "Invalid zipCode";
+  } else {
+    //zipCode.nextElementSibling.textContent = '';
     zipHint.style.display = "none";
-    
-  
+    hideToolTip(zipHint);
   }
+  
   ////////////////////////////////////////////////////////////////////////////
 
   if (testResults && emailTestResults && cardNumberTestResults && newcVVTestResults && zipCodeTestResults) {
