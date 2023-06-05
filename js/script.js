@@ -188,14 +188,20 @@ var cVV = document.getElementById('cvv');
 console.log(cVV);
 const form = document.querySelector('form');
 console.log(form);
-
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 form.addEventListener('submit', (event) => {
+
 event.preventDefault();
+
+
 var newNameRef = nameRef2.value;
 var regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
 var testResults = regex.test(newNameRef);
 //console.log(testResults);
+
+
 var newEmailRef = email.value;
 var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 var emailTestResults = emailRegex.test(newEmailRef);
@@ -203,24 +209,57 @@ var emailTestResults = emailRegex.test(newEmailRef);
 var newcardNumber = cardNumber.value;
 var cardNumberRegex = /^\d{16}$/;
 var cardNumberTestResults = cardNumberRegex.test(newcardNumber);
-
+/////////////////////////////////////////////////////////////////////////
+var newcVV = cVV.value;
+var newcVVregex = /^[0-9]{3,4}$/;
+var newcVVTestResults = newcVVregex.test(newcVV);
+///////////////////////////////////////////////////////////////////////////
+var newZipCode = zipCode.value;
+var zipCoderegex = /^\d{5}(?:-\d{4})?$/;
+var zipCodeTestResults = zipCoderegex.test(newZipCode);
     
 
 
 
 
 
-if(!testResults || !emailTestResults|| cardNumberTestResults) {
-event.preventDefault();
-alert('One or more fields invalid');
-nameRef2.value = '';
-email.value="";
-cardNumber.value="";
-}
-else {
-form.submit();
-console.log('All fields valid');
-};
+if (!testResults) {
+    event.preventDefault();
+    console.log('Invalid Name');
+    nameRef2.value = '';
 
+  }
+  
+  if (!emailTestResults) {
+    event.preventDefault();
+    console.log('Invalid Email');
+    email.value = '';
+  }
+  
+  if (!cardNumberTestResults) {
+    event.preventDefault();
+    console.log('Invalid Card Number');
+    cardNumber.value = '';
+  }
+  
+  if (!newcVVTestResults) {
+    event.preventDefault();
+    console.log('Invalid CVV');
+    cVV.value = '';
+  }
+  
+  if (!zipCodeTestResults) {
+    event.preventDefault();
+    console.log('Invalid Zip Code');
+    zipCode.value = '';
+  }
+  
+  if (testResults && emailTestResults && cardNumberTestResults && newcVVTestResults && zipCodeTestResults) {
+    alert('Form Submission Successful. Thank you.');    
+    form.submit();
+
+  } else {
+    console.log('One or more fields invalid');
+  }
 
 });
