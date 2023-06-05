@@ -217,7 +217,14 @@ var newcVVTestResults = newcVVregex.test(newcVV);
 var newZipCode = zipCode.value;
 var zipCoderegex = /^\d{5}(?:-\d{4})?$/;
 var zipCodeTestResults = zipCoderegex.test(newZipCode);
-    
+    ////////////////////
+
+var nameHint = document.getElementById('name-hint');
+var emailHint = document.getElementById('email-hint');
+var ccHint = document.getElementById('cc-hint');
+var cvvHint = document.getElementById('cvv-hint');
+var zipHint = document.getElementById('zip-hint');
+
 
 
 
@@ -226,60 +233,69 @@ var zipCodeTestResults = zipCoderegex.test(newZipCode);
 if (!testResults) {
     event.preventDefault();
     console.log('Invalid Name');
+    nameHint.style.display = "inline";
     nameRef2.value = '';
     nameRef2.nextElementSibling.textContent = "Invalid Name";
 }
 else {
     nameRef2.nextElementSibling.textContent = '';
+    nameHint.style.display = "none";
 
   }
   
   if (!emailTestResults) {
     event.preventDefault();
     console.log('Invalid Email');
+    emailHint.style.display = "inline";
     email.value = '';
     email.nextElementSibling.textContent = "Invalid Email";
 }
 else {
     email.nextElementSibling.textContent = '';
-
+    emailHint.style.display = "none";
   }
   
   
   if (!cardNumberTestResults) {
     event.preventDefault();
     console.log('Invalid Card Number');
+    ccHint.style.display = "inline";
     cardNumber.value = '';
     cardNumber.nextElementSibling.textContent = "Invalid card";
 }
 else {
     cardNumber.nextElementSibling.textContent = '';
+    ccHint.style.display = "none";
   }
   
   if (!newcVVTestResults) {
     event.preventDefault();
     console.log('Invalid CVV');
+    cvvHint.style.display = "inline";
     cVV.value = '';
     cVV.nextElementSibling.textContent = "Invalid CVV";
 }
 else {
     cVV.nextElementSibling.textContent = '';
+    cvvHint.style.display = "none";
     
   }
   
   if (!zipCodeTestResults) {
     event.preventDefault();
     console.log('Invalid Zip Code');
+    zipHint.style.display = "inline";
     zipCode.value = '';
     zipCode.nextElementSibling.textContent = "Invalid zipCode";
 }
 else {
     zipCode.nextElementSibling.textContent = '';
+    zipHint.style.display = "none";
     
   
   }
   ////////////////////////////////////////////////////////////////////////////
-  
+
   if (testResults && emailTestResults && cardNumberTestResults && newcVVTestResults && zipCodeTestResults) {
     alert('Form Submission Successful. Thank you.');    
     form.submit();
