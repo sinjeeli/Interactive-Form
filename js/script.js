@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function() {
+
+
+
 // console.log('test');
 //*just to test if the js file is working properly or not
 
@@ -191,16 +195,13 @@ console.log(form);
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 form.addEventListener('submit', (event) => {
-
 event.preventDefault();
 
 
 var newNameRef = nameRef2.value;
 var regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
 var testResults = regex.test(newNameRef);
-//console.log(testResults);
-
-
+///////////////////////////////////////////////////////////////////////
 var newEmailRef = email.value;
 var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 var emailTestResults = emailRegex.test(newEmailRef);
@@ -263,3 +264,109 @@ if (!testResults) {
 
 });
 //////////////////////////////////////////////////////////////////
+
+var activityCheckBoxes = document.querySelectorAll('#activites input[type="checkbox"]');
+console.log(activityCheckBoxes);
+
+///////////////////////////////////////////////////////////////
+for(var i = 0; i < activityCheckBoxes.length; i++) {
+var checkbox2 = activityCheckBoxes[i];
+console.log(checkbox2);
+
+
+checkbox2.addEventListener('focus', function(event) {
+  var parentLabel = event.target.parentElement;
+  parentLabel.classList.add('focus');
+});
+
+checkbox2.addEventListener('blur', function(event) {
+  var parentLabel = event.target.parentElement;
+  parentLabel.classList.remove('focus');
+});
+
+
+};
+//////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+nameRef2.addEventListener('blur', function() {
+  var parentElement = nameRef2.parentElement;
+  var errorMessage = parentElement.querySelector('#name-hint');
+  if(nameRef2.value.trim() === '') {
+    parentElement.classList.add('not-valid');
+    errorMessage.style.display = 'block';
+  }
+  else{
+    parentElement.classList.remove('not-valid');
+    errorMessage.style.display = 'none';
+    parentElement.classList.add('valid');
+
+  }
+});
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+email.addEventListener('blur', function() {
+  var parentElement = email.parentElement;
+  var errorMessage = parentElement.querySelector('#email-hint');
+  if(email.value.trim() === '') {
+    parentElement.classList.add('not-valid');
+    errorMessage.style.display = 'block';
+  }
+  else{
+    parentElement.classList.remove('not-valid');
+    errorMessage.style.display = 'none';
+    parentElement.classList.add('valid');
+
+  }
+});
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+cardNumber.addEventListener('blur', function() {
+  var parentElement = cardNumber.parentElement;
+  var errorMessage = parentElement.querySelector('#cc-hint');
+  if(cardNumber.value.trim() === '') {
+    parentElement.classList.add('not-valid');
+    errorMessage.style.display = 'block';
+  }
+  else{
+    parentElement.classList.remove('not-valid');
+    errorMessage.style.display = 'none';
+    parentElement.classList.add('valid');
+
+  }
+});
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+zipCode.addEventListener('blur', function() {
+  var parentElement = zipCode.parentElement;
+  var errorMessage = parentElement.querySelector('#zip-hint');
+  if(zipCode.value.trim() === '') {
+    parentElement.classList.add('not-valid');
+    errorMessage.style.display = 'block';
+  }
+  else{
+    parentElement.classList.remove('not-valid');
+    errorMessage.style.display = 'none';
+    parentElement.classList.add('valid');
+
+  }
+});
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+cVV.addEventListener('blur', function() {
+  var parentElement = cVV.parentElement;
+  var errorMessage = parentElement.querySelector('#cvv-hint');
+  if(cVV.value.trim() === '') {
+    parentElement.classList.add('not-valid');
+    errorMessage.style.display = 'block';
+  }
+  else{
+    parentElement.classList.remove('not-valid');
+    errorMessage.style.display = 'none';
+    parentElement.classList.add('valid');
+
+  }
+});
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+});
