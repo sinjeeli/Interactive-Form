@@ -8,7 +8,6 @@ console.log(nameRef);
 nameRef.focus();
 //Use the variable and the .focus() method to add the focus state to the element.
 
-
 //*test to see if the element is indeed active or not
 if(document.activeElement === nameRef) {
     console.log("element has the focus state active");
@@ -263,3 +262,4 @@ if (!testResults) {
   }
 
 });
+//////////////////////////////////////////////////////////////////
