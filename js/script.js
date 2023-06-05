@@ -227,6 +227,10 @@ if (!testResults) {
     event.preventDefault();
     console.log('Invalid Name');
     nameRef2.value = '';
+    nameRef2.nextElementSibling.textContent = "Invalid Name";
+}
+else {
+    nameRef2.nextElementSibling.textContent = '';
 
   }
   
@@ -234,25 +238,47 @@ if (!testResults) {
     event.preventDefault();
     console.log('Invalid Email');
     email.value = '';
+    email.nextElementSibling.textContent = "Invalid Email";
+}
+else {
+    email.nextElementSibling.textContent = '';
+
   }
+  
   
   if (!cardNumberTestResults) {
     event.preventDefault();
     console.log('Invalid Card Number');
     cardNumber.value = '';
+    cardNumber.nextElementSibling.textContent = "Invalid card";
+}
+else {
+    cardNumber.nextElementSibling.textContent = '';
   }
   
   if (!newcVVTestResults) {
     event.preventDefault();
     console.log('Invalid CVV');
     cVV.value = '';
+    cVV.nextElementSibling.textContent = "Invalid CVV";
+}
+else {
+    cVV.nextElementSibling.textContent = '';
+    
   }
   
   if (!zipCodeTestResults) {
     event.preventDefault();
     console.log('Invalid Zip Code');
     zipCode.value = '';
+    zipCode.nextElementSibling.textContent = "Invalid zipCode";
+}
+else {
+    zipCode.nextElementSibling.textContent = '';
+    
+  
   }
+  ////////////////////////////////////////////////////////////////////////////
   
   if (testResults && emailTestResults && cardNumberTestResults && newcVVTestResults && zipCodeTestResults) {
     alert('Form Submission Successful. Thank you.');    
