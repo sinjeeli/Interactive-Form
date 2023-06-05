@@ -227,31 +227,99 @@ if (!testResults) {
     event.preventDefault();
     console.log('Invalid Name');
     nameRef2.value = '';
-
-  }
+    var parentElement = nameRef2.parentElement;
+    var errorMessage = parentElement.querySelector('#name-hint');
+    if(nameRef2.value.trim() === '') {
+      parentElement.classList.add('not-valid');
+      errorMessage.style.display = 'block';
+    }
+    else{
+      parentElement.classList.remove('not-valid');
+      errorMessage.style.display = 'none';
+      parentElement.classList.add('valid');
   
+    }
+  }
+
+//  
   if (!emailTestResults) {
     event.preventDefault();
     console.log('Invalid Email');
     email.value = '';
-  }
+
+    var parentElement = email.parentElement;
+    var errorMessage = parentElement.querySelector('#email-hint');
+    if(email.value.trim() === '') {
+      parentElement.classList.add('not-valid');
+      errorMessage.style.display = 'block';
+    }
+    else{
+      parentElement.classList.remove('not-valid');
+      errorMessage.style.display = 'none';
+      parentElement.classList.add('valid');
   
+    }
+  }
+  //
+
   if (!cardNumberTestResults) {
     event.preventDefault();
     console.log('Invalid Card Number');
     cardNumber.value = '';
+
+    var parentElement = cardNumber.parentElement;
+    var errorMessage = parentElement.querySelector('#cc-hint');
+    if(cardNumber.value.trim() === '') {
+      parentElement.classList.add('not-valid');
+      errorMessage.style.display = 'block';
+    }
+    else{
+      parentElement.classList.remove('not-valid');
+      errorMessage.style.display = 'none';
+      parentElement.classList.add('valid');
+  
+    }
+
   }
+  //
+
   
   if (!newcVVTestResults) {
     event.preventDefault();
     console.log('Invalid CVV');
     cVV.value = '';
-  }
+
+    var parentElement = cVV.parentElement;
+    var errorMessage = parentElement.querySelector('#cvv-hint');
+    if(cVV.value.trim() === '') {
+      parentElement.classList.add('not-valid');
+      errorMessage.style.display = 'block';
+    }
+    else{
+      parentElement.classList.remove('not-valid');
+      errorMessage.style.display = 'none';
+      parentElement.classList.add('valid');
   
+    }
+  }
+  //
   if (!zipCodeTestResults) {
     event.preventDefault();
     console.log('Invalid Zip Code');
     zipCode.value = '';
+
+    var parentElement = zipCode.parentElement;
+    var errorMessage = parentElement.querySelector('#zip-hint');
+    if(zipCode.value.trim() === '') {
+      parentElement.classList.add('not-valid');
+      errorMessage.style.display = 'block';
+    }
+    else{
+      parentElement.classList.remove('not-valid');
+      errorMessage.style.display = 'none';
+      parentElement.classList.add('valid');
+  
+    }
   }
   
   if (testResults && emailTestResults && cardNumberTestResults && newcVVTestResults && zipCodeTestResults) {
