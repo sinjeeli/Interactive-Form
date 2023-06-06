@@ -16,7 +16,20 @@ title.addEventListener('change', (event) => {
 
 
     event.target.value;
+
     console.log(title);
     console.log(event.target.value);
 
+    if(event.target.value === 'other') {
+
+        otherJobRole.style.display = "block";
+
+    }
+    else {
+
+        otherJobRole.style.display = "none";
+    }
+
 });
+//
+
