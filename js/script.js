@@ -97,7 +97,7 @@ else{
 }
 console.log(totalCost);
 
-
+activitiesCost.innerHTML =`Total: $${totalCost}`;
 
 });
 
