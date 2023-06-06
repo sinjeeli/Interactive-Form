@@ -100,4 +100,42 @@ console.log(totalCost);
 activitiesCost.innerHTML =`Total: $${totalCost}`;
 
 });
+//
+var payment = document.getElementById('payment');
+var creditCard = document.getElementById('credit-card');
+var payPal = document.getElementById('paypal');
+var bitcoin = document.getElementById('bitcoin');
+// console.log(payment);
+// console.log(creditCard);
+// console.log(payPal);
+// console.log(bitcoin);
+//
+payPal.hidden = true;
+bitcoin.hidden = true;
+payment.children[1].setAttribute('selected', "");
+//1 is the second child element
 
+payment.addEventListener('change', (event) => {
+
+    if(event.target.value === 'paypal') {
+
+        payPal.style.display = "block";
+        bitcoin.style.display = "none";
+        creditCard.style.display = "none";
+
+    }
+    else if(event.target.value === 'bitcoin') {
+
+        payPal.style.display = "none";
+        bitcoin.style.display = "block";
+        creditCard.style.display = "none";
+
+    }
+    else if(event.target.value === 'credit-card') {
+
+        payPal.style.display = "none";
+        bitcoin.style.display = "none";
+        creditCard.style.display = "block";
+
+    }
+});
