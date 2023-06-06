@@ -51,9 +51,18 @@ design.addEventListener('change', (event) => {
     for(var i = 0; i < colorOptions.length; i++) {
 
         var eventRef = event.target.value;
-        colorOptions[i].getAttribute('data-theme');
+       var colorOptions2 = colorOptions[i].getAttribute('data-theme');
 
-
+        if(eventRef === colorOptions) {
+            colorOptions.hidden = false;
+            colorOptions2.setAttribute('data-theme', "");
+            
+        }
+        else {
+            colorOptions.hidden = true;
+            colorOptions2.setAttribute();
+                       
+        }
     }
 
 
