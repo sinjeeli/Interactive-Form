@@ -199,37 +199,79 @@ function validateCreditCard() {
 //
 
 
-form.addEventListener('submit', (event) => {
 
 
+var activityCheckboxes = document.querySelectorAll('#activities input[type="checkbox"]');
+activityCheckboxes.forEach(function (checkbox) {
+  checkbox.addEventListener('focus', function (event) {
+    event.target.parentElement.classList.add('focus');
+  });
 
-     // Validate the Name field
-     if (!validateName()) {
-        event.preventDefault();
-        console.log('Invalid Name');
-        return;
+  checkbox.addEventListener('blur', function (event) {
+    event.target.parentElement.classList.remove('focus');
+  });
+});
+
+
+///////////////////////////////////////////
+form.addEventListener('submit', function (event) {
+    // Validate the Name field
+    if (!validateName()) {
+      event.preventDefault();
+      nameRef.parentElement.classList.add('not-valid');
+      nameRef.parentElement.classList.remove('valid');
+      nameRef.parentElement.lastElementChild.style.display = 'block';
+    } else {
+      nameRef.parentElement.classList.remove('not-valid');
+      nameRef.parentElement.classList.add('valid');
+      nameRef.parentElement.lastElementChild.style.display = 'none';
     }
-
+  
     // Validate the Email Address field
     if (!validateEmail()) {
-        event.preventDefault();
-        console.log('Invalid Email Address');
-        return;
+      event.preventDefault();
+      email.parentElement.classList.add('not-valid');
+      email.parentElement.classList.remove('valid');
+      email.parentElement.lastElementChild.style.display = 'block';
+    } else {
+      email.parentElement.classList.remove('not-valid');
+      email.parentElement.classList.add('valid');
+      email.parentElement.lastElementChild.style.display = 'none';
     }
-
+  
     // Validate the Register for Activities section
     if (!validateActivities()) {
-        event.preventDefault();
-        console.log('Please select at least one activity');
-        return;
+      event.preventDefault();
+      activities.classList.add('not-valid');
+      activities.classList.remove('valid');
+      activities.lastElementChild.style.display = 'block';
+    } else {
+      activities.classList.remove('not-valid');
+      activities.classList.add('valid');
+      activities.lastElementChild.style.display = 'none';
     }
-
+  
     // Validate the Credit Card section (if selected)
     if (payment.value === 'credit-card' && !validateCreditCard()) {
-        event.preventDefault();
-        console.log('Invalid Credit Card details');
-        return;
+      event.preventDefault();
+      ccNum.parentElement.classList.add('not-valid');
+      ccNum.parentElement.classList.remove('valid');
+      ccNum.parentElement.lastElementChild.style.display = 'block';
+      zipCode.parentElement.classList.add('not-valid');
+      zipCode.parentElement.classList.remove('valid');
+      zipCode.parentElement.lastElementChild.style.display = 'block';
+      cvv.parentElement.classList.add('not-valid');
+      cvv.parentElement.classList.remove('valid');
+      cvv.parentElement.lastElementChild.style.display = 'block';
+    } else {
+      ccNum.parentElement.classList.remove('not-valid');
+      ccNum.parentElement.classList.add('valid');
+      ccNum.parentElement.lastElementChild.style.display = 'none';
+      zipCode.parentElement.classList.remove('not-valid');
+      zipCode.parentElement.classList.add('valid');
+      zipCode.parentElement.lastElementChild.style.display = 'none';
+      cvv.parentElement.classList.remove('not-valid');
+      cvv.parentElement.classList.add('valid');
+      cvv.parentElement.lastElementChild.style.display = 'none';
     }
-
-    // If all fields pass validation, the form will submit as usual
-});
+  });
