@@ -188,79 +188,131 @@ console.log(zipCode);
 var cVV = document.getElementById('cvv');
 console.log(cVV);
 const form = document.querySelector('form');
-console.log(form);
-////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
 form.addEventListener('submit', (event) => {
+  event.preventDefault();
 
-event.preventDefault();
-
-
-var newNameRef = nameRef2.value;
-var regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
-var testResults = regex.test(newNameRef);
-//console.log(testResults);
-
-
-var newEmailRef = email.value;
-var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-var emailTestResults = emailRegex.test(newEmailRef);
-/////////////////////////////////////////////////////////////////////////
-var newcardNumber = cardNumber.value;
-var cardNumberRegex = /^\d{16}$/;
-var cardNumberTestResults = cardNumberRegex.test(newcardNumber);
-/////////////////////////////////////////////////////////////////////////
-var newcVV = cVV.value;
-var newcVVregex = /^[0-9]{3,4}$/;
-var newcVVTestResults = newcVVregex.test(newcVV);
-///////////////////////////////////////////////////////////////////////////
-var newZipCode = zipCode.value;
-var zipCoderegex = /^\d{5}(?:-\d{4})?$/;
-var zipCodeTestResults = zipCoderegex.test(newZipCode);
-    
-
-
-
-
-
-if (!testResults) {
-    event.preventDefault();
-    console.log('Invalid Name');
-    nameRef2.value = '';
-
+  // Validate Name field
+  if (nameRef.value.trim() === '') {
+    // Display error for Name field
+    displayError(nameRef.parentNode);
+  } else {
+    // Remove error for Name field
+    removeError(nameRef.parentNode);
   }
-  
-  if (!emailTestResults) {
-    event.preventDefault();
-    console.log('Invalid Email');
-    email.value = '';
+
+  // Validate Email field
+  if (!isValidEmail(email.value)) {
+    // Display error for Email field
+    displayError(email.parentNode);
+  } else {
+    // Remove error for Email field
+    removeError(email.parentNode);
   }
-  
-  if (!cardNumberTestResults) {
-    event.preventDefault();
-    console.log('Invalid Card Number');
-    cardNumber.value = '';
+
+  // Validate Activities section
+  if (!isActivitiesSelected()) {
+    // Display error for Activities section
+    displayError(activitiesRef.parentNode);
+  } else {
+    // Remove error for Activities section
+    removeError(activitiesRef.parentNode);
   }
-  
-  if (!newcVVTestResults) {
-    event.preventDefault();
-    console.log('Invalid CVV');
-    cVV.value = '';
+
+  // Validate Credit Card section if selected
+  if (payment.value === 'credit-card') {
+    if (!isValidCardNumber(cardNumber.value)) {
+      // Display error for Card Number field
+      displayError(cardNumber.parentNode);
+    } else {
+      // Remove error for Card Number field
+      removeError(cardNumber.parentNode);
+    }
+
+    if (!isValidZipCode(zipCode.value)) {
+      // Display error for Zip Code field
+      displayError(zipCode.parentNode);
+    } else {
+      // Remove error for Zip Code field
+      removeError(zipCode.parentNode);
+    }
+
+    if (!isValidCVV(cVV.value)) {
+      // Display error for CVV field
+      displayError(cVV.parentNode);
+    } else {
+      // Remove error for CVV field
+      removeError(cVV.parentNode);
+    }
   }
-  
-  if (!zipCodeTestResults) {
-    event.preventDefault();
-    console.log('Invalid Zip Code');
-    zipCode.value = '';
-  }
-  
-  if (testResults && emailTestResults && cardNumberTestResults && newcVVTestResults && zipCodeTestResults) {
-    alert('Form Submission Successful. Thank you.');    
+
+  // Check if any errors exist
+  if (form.querySelectorAll('.not-valid').length === 0) {
+    // Submit the form if all fields are valid
     form.submit();
-
   } else {
     console.log('One or more fields invalid');
   }
+});
 
+function displayError(element) {
+  element.classList.add('not-valid');
+  element.classList.remove('valid');
+  element.lastElementChild.style.display = 'block';
+}
+
+function removeError(element) {
+  element.classList.remove('not-valid');
+  element.classList.add('valid');
+  element.lastElementChild.style.display = 'none';
+}
+
+function isValidEmail(email) {
+  // Email validation logic (regex or other methods)
+  // Return true if email is valid, false otherwise
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function isActivitiesSelected() {
+  // Activities section validation logic
+  // Return true if at least one activity is selected, false otherwise
+  const activityCheckboxes = document.querySelectorAll('#activities input[type="checkbox"]');
+  return Array.from(activityCheckboxes).some(checkbox => checkbox.checked);
+}
+
+function isValidCardNumber(cardNumber) {
+  // Card number validation logic (regex or other methods)
+  // Return true if card number is valid, false otherwise
+  const cardNumberRegex = /^\d{16}$/;
+  return cardNumberRegex.test(cardNumber);
+}
+
+function isValidZipCode(zipCode) {
+  // Zip code validation logic (regex or other methods)
+  // Return true if zip code is valid, false otherwise
+  const zipCodeRegex = /^\d{5}$/;
+  return zipCodeRegex.test(zipCode);
+}
+
+function isValidCVV(cvv) {
+  // CVV validation logic (regex or other methods)
+  // Return true if CVV is valid, false otherwise.
+  const cvvRegex = /^\d{3}$/;
+  return cvvRegex.test(cvv);
+}
+
+
+const activityCheckboxes = document.querySelectorAll('#activities input[type="checkbox"]');
+
+activityCheckboxes.forEach((checkbox) => {
+  checkbox.addEventListener('focus', () => {
+    checkbox.parentNode.classList.add('focus');
+  });
+
+  checkbox.addEventListener('blur', () => {
+    checkbox.parentNode.classList.remove('focus');
+  });
 });
