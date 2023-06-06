@@ -30,6 +30,35 @@ title.addEventListener('change', (event) => {
         otherJobRole.style.display = "none";
     }
 
+
+
 });
+//3 elements
+var design = document.getElementById('design');
+var color = document.getElementById('color');
+var colorOptions = color.children;
+
+console.log(design);
+console.log(color);
+console.log(colorOptions);
 //
+color.disabled = true;
+//
+design.addEventListener('change', (event) => {
+
+    color.disabled = false;
+    //
+    for(var i = 0; i < colorOptions.length; i++) {
+
+        var eventRef = event.target.value;
+        colorOptions[i].getAttribute('data-theme');
+
+
+    }
+
+
+    console.log(eventRef)
+    console.log(colorOptions)
+});
+
 
