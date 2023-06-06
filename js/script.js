@@ -156,30 +156,6 @@ var zipCode = document.getElementById('zip');
 var cvv = document.getElementById('cvv');
 var form = document.querySelector('form');
 //
-form.addEventListener('submit', (event) => {
-
-
-
-    
-
-//     var nameValue = nameRef.value;
-//     var nameRegex = /^[A-Za-z\s]+$/;
-//     var nameRegexTest = nameRegex.test(nameValue);
-
-//     //
-//     //console.log(nameValue);
-//    //console.log(nameRegexTest);
-//     //
-
-    if(nameRegexTest === 'false'/*&& for all required fields*/ ) {
-
-        event.preventDefault()
-
-    }
-
-
-
-});
 
 function validateName() {
 
@@ -223,4 +199,37 @@ function validateCreditCard() {
 //
 
 
+form.addEventListener('submit', (event) => {
 
+
+
+     // Validate the Name field
+     if (!validateName()) {
+        event.preventDefault();
+        console.log('Invalid Name');
+        return;
+    }
+
+    // Validate the Email Address field
+    if (!validateEmail()) {
+        event.preventDefault();
+        console.log('Invalid Email Address');
+        return;
+    }
+
+    // Validate the Register for Activities section
+    if (!validateActivities()) {
+        event.preventDefault();
+        console.log('Please select at least one activity');
+        return;
+    }
+
+    // Validate the Credit Card section (if selected)
+    if (payment.value === 'credit-card' && !validateCreditCard()) {
+        event.preventDefault();
+        console.log('Invalid Credit Card details');
+        return;
+    }
+
+    // If all fields pass validation, the form will submit as usual
+});
