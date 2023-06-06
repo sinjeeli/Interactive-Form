@@ -143,3 +143,84 @@ payment.addEventListener('change', (event) => {
 ///////////////////////////////////////////////////
 ///////////////////////////////////////////////////
 //////////////////////////////////////////////////
+//console.log(nameRef);
+// console.log(email);
+// console.log(activities);
+// console.log(ccNum);
+// console.log(zipCode);
+// console.log(cvv);
+// console.log(form);
+var email = document.getElementById('email');
+var ccNum = document.getElementById('cc-num');
+var zipCode = document.getElementById('zip');
+var cvv = document.getElementById('cvv');
+var form = document.querySelector('form');
+//
+form.addEventListener('submit', (event) => {
+
+
+
+    
+
+//     var nameValue = nameRef.value;
+//     var nameRegex = /^[A-Za-z\s]+$/;
+//     var nameRegexTest = nameRegex.test(nameValue);
+
+//     //
+//     //console.log(nameValue);
+//    //console.log(nameRegexTest);
+//     //
+
+    if(nameRegexTest === 'false'/*&& for all required fields*/ ) {
+
+        event.preventDefault()
+
+    }
+
+
+
+});
+
+function validateName() {
+
+    var nameValue = nameRef.value;
+    var nameRegex = /^[A-Za-z\s]+$/;
+    return nameRegex.test(nameValue);
+
+
+}
+//
+function validateEmail() {
+
+    var emailValue = email.value;
+    var emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+    return emailRegex.test(emailValue);
+   
+}
+//
+function validateActivities() { 
+
+return activities.querySelectorAll('input[type="checkbox"]:checked').length > 0;
+
+}
+
+function validateCreditCard() {
+
+    var ccNumValue = ccNum.value;
+    var ccNumRegex = /^\d{13,16}$/;
+    //return ccNumRegex.test(ccNumValue);
+    //
+    var zipCodeValue = zipCode.value;
+    var zipCodeRegex = /^\d{5}$/;
+    //return zipCodeRegex.test(zipCodeValue);
+    //
+    var cvvValue = cvv.value;
+    var cvvRegex = /^\d{3}$/;
+    //return cvvRegex.test(cvvValue);
+
+    return ccNumRegex.test(ccNumValue) && zipCodeRegex.test(zipCodeValue) && cvvRegex.test(cvvValue);
+    }
+//
+
+
+
