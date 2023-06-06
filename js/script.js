@@ -83,14 +83,19 @@ console.log(totalCost);
 //////////////////////////////////////////////////////////////////////
 
 activities.addEventListener('change', (event) => {
-
 var dataCostRef = +event.target.getAttribute('data-cost');
-
-
-
 console.log(dataCostRef);
-
 console.log(typeof dataCostRef);
+//
+if(event.target.checked) {
+    totalCost += dataCostRef;
+    console.log('checked');
+}
+else{
+    totalCost -= dataCostRef;
+    console.log('unchecked');
+}
+console.log(totalCost);
 
 
 
