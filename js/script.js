@@ -68,6 +68,31 @@ design.addEventListener('change', (event) => {
 
     console.log(eventRef)
     console.log(colorOptions)
-});
 
+
+});
+//
+
+var activities = document.getElementById('activities');
+var activitiesCost = document.getElementById('activities-cost');
+var totalCost =  0;
+
+console.log(activities);
+console.log(activitiesCost);
+console.log(totalCost);
+//////////////////////////////////////////////////////////////////////
+
+activities.addEventListener('change', (event) => {
+
+var dataCostRef = +event.target.getAttribute('data-cost');
+
+
+
+console.log(dataCostRef);
+
+console.log(typeof dataCostRef);
+
+
+
+});
 
