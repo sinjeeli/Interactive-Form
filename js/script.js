@@ -197,22 +197,34 @@ return activities.querySelectorAll('input[type="checkbox"]:checked').length > 0;
 //check to see if at least 1 activity has been checked 
 }
 
-function validateCreditCard() {
+function ccNumValue() {
 //checks to see if all required fields match the regex assigned
     var ccNumValue = ccNum.value;
     var ccNumRegex = /^\d{13,16}$/;
 
-    var zipCodeValue = zipCode.value;
-    var zipCodeRegex = /^\d{5}$/;
 
-    var cvvValue = cvv.value;
-    var cvvRegex = /^\d{3}$/;
-
-
-    return ccNumRegex.test(ccNumValue) && zipCodeRegex.test(zipCodeValue) && cvvRegex.test(cvvValue);
+    return ccNumRegex.test(ccNumValue);
     }
 //
+function zipCodeValue() {
+  //checks to see if all required fields match the regex assigned
 
+  
+      var zipCodeValue = zipCode.value;
+      var zipCodeRegex = /^\d{5}$/;
+
+  
+      return zipCodeRegex.test(zipCodeValue);
+      }
+
+      function cvvValue() {
+        //checks to see if all required fields match the regex assigned
+            var cvvValue = cvv.value;
+            var cvvRegex = /^\d{3}$/;
+        
+        
+            return cvvRegex.test(cvvValue);
+            }
 
 
 
@@ -232,65 +244,79 @@ activityCheckboxes.forEach(function (checkbox) {
 
 ///////////////////////////////////////////
 form.addEventListener('submit', function (event) {
-    // Validate the Name field
-    if (!validateName()) {
-      event.preventDefault();
-      nameRef.parentElement.classList.add('not-valid');
-      nameRef.parentElement.classList.remove('valid');
-      nameRef.parentElement.lastElementChild.style.display = 'block';
-    } else {
-      nameRef.parentElement.classList.remove('not-valid');
-      nameRef.parentElement.classList.add('valid');
-      nameRef.parentElement.lastElementChild.style.display = 'none';
-    }
-  
-    // Validate the Email Address field
-    if (!validateEmail()) {
-      event.preventDefault();
-      email.parentElement.classList.add('not-valid');
-      email.parentElement.classList.remove('valid');
-      email.parentElement.lastElementChild.style.display = 'block';
-    } else {
-      email.parentElement.classList.remove('not-valid');
-      email.parentElement.classList.add('valid');
-      email.parentElement.lastElementChild.style.display = 'none';
-    }
-  
-    // Validate the Register for Activities section
-    if (!validateActivities()) {
-      event.preventDefault();
-      activities.classList.add('not-valid');
-      activities.classList.remove('valid');
-      activities.lastElementChild.style.display = 'block';
-    } else {
-      activities.classList.remove('not-valid');
-      activities.classList.add('valid');
-      activities.lastElementChild.style.display = 'none';
-    }
-  
-    // Validate the Credit Card section (if selected)
-    if (payment.value === 'credit-card' && !validateCreditCard()) {
+  // Validate the Name field
+  if (!validateName()) {
+    event.preventDefault();
+    nameRef.parentElement.classList.add('not-valid');
+    nameRef.parentElement.classList.remove('valid');
+    nameRef.parentElement.lastElementChild.style.display = 'block';
+  } else {
+    nameRef.parentElement.classList.remove('not-valid');
+    nameRef.parentElement.classList.add('valid');
+    nameRef.parentElement.lastElementChild.style.display = 'none';
+  }
+
+  // Validate the Email Address field
+  if (!validateEmail()) {
+    event.preventDefault();
+    email.parentElement.classList.add('not-valid');
+    email.parentElement.classList.remove('valid');
+    email.parentElement.lastElementChild.style.display = 'block';
+  } else {
+    email.parentElement.classList.remove('not-valid');
+    email.parentElement.classList.add('valid');
+    email.parentElement.lastElementChild.style.display = 'none';
+  }
+
+  // Validate the Register for Activities section
+  if (!validateActivities()) {
+    event.preventDefault();
+    activities.classList.add('not-valid');
+    activities.classList.remove('valid');
+    activities.lastElementChild.style.display = 'block';
+  } else {
+    activities.classList.remove('not-valid');
+    activities.classList.add('valid');
+    activities.lastElementChild.style.display = 'none';
+  }
+
+  // Validate the Credit Card section (if selected)
+  if (payment.value === 'credit-card') {
+    if (!ccNumValue()) {
       event.preventDefault();
       ccNum.parentElement.classList.add('not-valid');
       ccNum.parentElement.classList.remove('valid');
       ccNum.parentElement.lastElementChild.style.display = 'block';
-      zipCode.parentElement.classList.add('not-valid');
-      zipCode.parentElement.classList.remove('valid');
-      zipCode.parentElement.lastElementChild.style.display = 'block';
-      cvv.parentElement.classList.add('not-valid');
-      cvv.parentElement.classList.remove('valid');
-      cvv.parentElement.lastElementChild.style.display = 'block';
     } else {
       ccNum.parentElement.classList.remove('not-valid');
       ccNum.parentElement.classList.add('valid');
       ccNum.parentElement.lastElementChild.style.display = 'none';
+    }
+
+    if (!zipCodeValue()) {
+      event.preventDefault();
+      zipCode.parentElement.classList.add('not-valid');
+      zipCode.parentElement.classList.remove('valid');
+      zipCode.parentElement.lastElementChild.style.display = 'block';
+    } else {
       zipCode.parentElement.classList.remove('not-valid');
       zipCode.parentElement.classList.add('valid');
       zipCode.parentElement.lastElementChild.style.display = 'none';
+    }
+
+    if (!cvvValue()) {
+      event.preventDefault();
+      cvv.parentElement.classList.add('not-valid');
+      cvv.parentElement.classList.remove('valid');
+      cvv.parentElement.lastElementChild.style.display = 'block';
+    } else {
       cvv.parentElement.classList.remove('not-valid');
       cvv.parentElement.classList.add('valid');
       cvv.parentElement.lastElementChild.style.display = 'none';
     }
-  });
+  }
+});
+
+// ...
 
   //project complete
